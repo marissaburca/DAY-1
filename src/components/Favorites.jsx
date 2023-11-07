@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Col, Row, Button } from 'react-bootstrap';
 import { FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { removeFromFavoritesAction } from '../redux/actions';
 
 const Favorites = () => {
     const favorites = useSelector((state) => state.favorites.content)
@@ -16,10 +17,7 @@ const Favorites = () => {
                 className='me-5'
                   variant="danger"
                   onClick={() => {
-                    dispatch({
-                      type: 'REMOVE_FROM_FAV',
-                      payload: i,
-                    })
+                    dispatch(removeFromFavoritesAction(i))
                   }}
                 >
                   <FaTrash />
