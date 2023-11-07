@@ -16,10 +16,10 @@ const MainSearch = () => {
     setQuery(e.target.value);
   };
 
-  useEffect(()=>{
-  
-    dispatch(handleSubmitAction(query))
-  },[query])
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(handleSubmitAction(query));
+  };
 
   return (
     <Container>
@@ -29,8 +29,8 @@ const MainSearch = () => {
           <Link to='/Favorites' className="fs-5 text-success nav-link border text-nowrap border-4 ms-5 px-2" ><MdFavorite/> See favorites</Link>
         </Col>
         <Col xs={10} className="mx-auto">
-          <Form onSubmit={
-            jobsFromReduxStore}>
+          <Form onSubmit={ 
+            handleSubmit}>
             <Form.Control type="search" value={query} onChange={handleChange} placeholder="type and press Enter" />
           </Form>
         </Col>
